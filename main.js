@@ -68,8 +68,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var ng2_file_upload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ng2-file-upload */ "./node_modules/ng2-file-upload/__ivy_ngcc__/fesm2015/ng2-file-upload.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _img_video_preview_directive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./img-video-preview.directive */ "./src/app/img-video-preview.directive.ts");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _img_video_preview_directive__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./img-video-preview.directive */ "./src/app/img-video-preview.directive.ts");
+
 
 
 
@@ -104,8 +106,9 @@ function AppComponent_div_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 class AppComponent {
-    constructor(el) {
+    constructor(el, domSanitizationService) {
         this.el = el;
+        this.domSanitizationService = domSanitizationService;
         this.title = 'file-upload';
         this.uploader = new ng2_file_upload__WEBPACK_IMPORTED_MODULE_1__["FileUploader"]({
             url: '123132',
@@ -121,9 +124,24 @@ class AppComponent {
     upload() {
         this.el.nativeElement.querySelector('.input-upload').click();
     }
+    getObjectURL(file) {
+        var url = null;
+        if (window.URL != undefined) {
+            // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        }
+        else if (window.webkitURL != undefined) {
+            // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+    toBlog(file) {
+        return new Blob(file);
+    }
 }
-AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 6, vars: 4, consts: [[1, "img-video-container"], ["class", "media", 3, "dblclick", 4, "ngFor", "ngForOf"], ["class", "add-file", 3, "click", 4, "ngIf"], ["type", "file", "ng2FileSelect", "", "accept", "image/*, video/*", "name", "Upload", "multiple", "", 1, "input-upload", 2, "display", "none", 3, "uploader"], [1, "media", 3, "dblclick"], ["src", "./\u6731\u8335.jpg", "filePreview", "", 2, "width", "200px", "height", "200px", 3, "file"], ["controls", "", "filePreview", "", "src", "", 2, "width", "200px", "height", "200px", 3, "file"], [1, "add-file", 3, "click"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"])); };
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 6, vars: 4, consts: [[1, "img-video-container"], ["class", "media", 3, "dblclick", 4, "ngFor", "ngForOf"], ["class", "add-file", 3, "click", 4, "ngIf"], ["type", "file", "ng2FileSelect", "", "accept", "image/*, video/*", "name", "Upload", "multiple", "", 1, "input-upload", 2, "display", "none", 3, "uploader"], [1, "media", 3, "dblclick"], ["filePreview", "", 2, "width", "120px", "height", "120px", 3, "file"], ["controls", "", "filePreview", "", 2, "width", "120px", "height", "120px", 3, "file"], [1, "add-file", 3, "click"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "section", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, AppComponent_div_2_Template, 2, 1, "div", 1);
@@ -141,7 +159,7 @@ AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCompo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.imgs.length + ctx.videos.length < 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("uploader", ctx.uploader);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], ng2_file_upload__WEBPACK_IMPORTED_MODULE_1__["FileSelectDirective"], _img_video_preview_directive__WEBPACK_IMPORTED_MODULE_3__["ImgVideoPreview"]], styles: [".img-video-container[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n}\n.img-video-container[_ngcontent-%COMP%]    > div[_ngcontent-%COMP%] {\n  margin-top: 10px;\n  margin-right: 10px;\n}\n.img-video-container[_ngcontent-%COMP%]   .add-file[_ngcontent-%COMP%] {\n  width: 200px;\n  height: 200px;\n  line-height: 200px;\n  text-align: center;\n  border: 2px dashed #ddd;\n  border-radius: 4px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtFQUNBLDJCQUFBO0VBQ0EsZUFBQTtBQUNGO0FBQUU7RUFDRSxnQkFBQTtFQUNBLGtCQUFBO0FBRUo7QUFBRTtFQUNFLFlBQUE7RUFDQSxhQUFBO0VBQ0Esa0JBQUE7RUFDQSxrQkFBQTtFQUNBLHVCQUFBO0VBQ0Esa0JBQUE7QUFFSiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5pbWctdmlkZW8tY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBmbGV4LXN0YXJ0O1xuICBmbGV4LXdyYXA6IHdyYXA7XG4gID4gZGl2IHtcbiAgICBtYXJnaW4tdG9wOiAxMHB4O1xuICAgIG1hcmdpbi1yaWdodDogMTBweDtcbiAgfVxuICAuYWRkLWZpbGUge1xuICAgIHdpZHRoOiAyMDBweDtcbiAgICBoZWlnaHQ6IDIwMHB4O1xuICAgIGxpbmUtaGVpZ2h0OiAyMDBweDtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgYm9yZGVyOiAycHggZGFzaGVkICNkZGQ7XG4gICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICB9XG59XG4iXX0= */"] });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], ng2_file_upload__WEBPACK_IMPORTED_MODULE_1__["FileSelectDirective"], _img_video_preview_directive__WEBPACK_IMPORTED_MODULE_4__["ImgVideoPreview"]], styles: [".img-video-container[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: wrap;\n}\n.img-video-container[_ngcontent-%COMP%]    > div[_ngcontent-%COMP%] {\n  margin-top: 10px;\n  margin-right: 10px;\n}\n.img-video-container[_ngcontent-%COMP%]   .add-file[_ngcontent-%COMP%] {\n  width: 200px;\n  height: 200px;\n  line-height: 200px;\n  text-align: center;\n  border: 2px dashed #ddd;\n  border-radius: 4px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtFQUNBLDJCQUFBO0VBQ0EsZUFBQTtBQUNGO0FBQUU7RUFDRSxnQkFBQTtFQUNBLGtCQUFBO0FBRUo7QUFBRTtFQUNFLFlBQUE7RUFDQSxhQUFBO0VBQ0Esa0JBQUE7RUFDQSxrQkFBQTtFQUNBLHVCQUFBO0VBQ0Esa0JBQUE7QUFFSiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5pbWctdmlkZW8tY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBmbGV4LXN0YXJ0O1xuICBmbGV4LXdyYXA6IHdyYXA7XG4gID4gZGl2IHtcbiAgICBtYXJnaW4tdG9wOiAxMHB4O1xuICAgIG1hcmdpbi1yaWdodDogMTBweDtcbiAgfVxuICAuYWRkLWZpbGUge1xuICAgIHdpZHRoOiAyMDBweDtcbiAgICBoZWlnaHQ6IDIwMHB4O1xuICAgIGxpbmUtaGVpZ2h0OiAyMDBweDtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgYm9yZGVyOiAycHggZGFzaGVkICNkZGQ7XG4gICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICB9XG59XG4iXX0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AppComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -149,7 +167,7 @@ AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCompo
                 templateUrl: './app.component.html',
                 styleUrls: ['./app.component.scss'],
             }]
-    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }]; }, null); })();
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"] }]; }, null); })();
 
 
 /***/ }),
@@ -213,19 +231,31 @@ class ImgVideoPreview {
         this.el = el;
         this.renderer = renderer;
     }
-    ngOnChanges(changes) {
-        const reader = new FileReader();
-        const el = this.el;
-        reader.onloadend = function (e) {
-            el.nativeElement.src = reader.result;
-        };
-        if (this.file) {
-            return reader.readAsDataURL(this.file);
+    ngAfterViewInit() {
+        const URL = this.getObjectURL(this.file);
+        if (this.file.type.startsWith('video')) {
+            //   this.el.nativeElement.poster = `${URL}?`
+            this.el.nativeElement.src = URL + '#t=0.5';
         }
+        else {
+            this.el.nativeElement.src = URL;
+        }
+    }
+    getObjectURL(file) {
+        var url = null;
+        if (window.URL != undefined) {
+            // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        }
+        else if (window.webkitURL != undefined) {
+            // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
     }
 }
 ImgVideoPreview.ɵfac = function ImgVideoPreview_Factory(t) { return new (t || ImgVideoPreview)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"])); };
-ImgVideoPreview.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: ImgVideoPreview, selectors: [["", "filePreview", ""]], inputs: { file: "file" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵNgOnChangesFeature"]] });
+ImgVideoPreview.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: ImgVideoPreview, selectors: [["", "filePreview", ""]], inputs: { file: "file" } });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ImgVideoPreview, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
         args: [{ selector: '[filePreview]' }]
