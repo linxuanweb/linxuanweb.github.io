@@ -141,7 +141,7 @@ class AppComponent {
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"])); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 6, vars: 4, consts: [[1, "img-video-container"], ["class", "media", 3, "dblclick", 4, "ngFor", "ngForOf"], ["class", "add-file", 3, "click", 4, "ngIf"], ["type", "file", "ng2FileSelect", "", "accept", "image/*, video/*", "name", "Upload", "multiple", "", 1, "input-upload", 2, "display", "none", 3, "uploader"], [1, "media", 3, "dblclick"], ["filePreview", "", 2, "width", "120px", "height", "120px", 3, "file"], ["controls", "", "filePreview", "", 2, "width", "120px", "height", "120px", 3, "file"], [1, "add-file", 3, "click"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 6, vars: 4, consts: [[1, "img-video-container"], ["class", "media", 3, "dblclick", 4, "ngFor", "ngForOf"], ["class", "add-file", 3, "click", 4, "ngIf"], ["type", "file", "ng2FileSelect", "", "accept", "image/* video/*", "name", "Upload", "multiple", "", 1, "input-upload", 2, "display", "none", 3, "uploader"], [1, "media", 3, "dblclick"], ["filePreview", "", 2, "width", "200px", "height", "200px", 3, "file"], ["controls", "", "filePreview", "", 2, "width", "200px", "height", "200px", 3, "file"], [1, "add-file", 3, "click"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "section", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, AppComponent_div_2_Template, 2, 1, "div", 1);
@@ -234,10 +234,6 @@ class ImgVideoPreview {
     ngAfterViewInit() {
         const URL = this.getObjectURL(this.file);
         this.el.nativeElement.src = URL;
-        if (this.file.type.startsWith('video')) {
-            this.el.nativeElement.poster = `${URL}?vframe/jpg/offset/1`;
-            this.el.nativeElement.src = URL;
-        }
     }
     getObjectURL(file) {
         var url = null;
