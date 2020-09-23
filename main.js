@@ -102,7 +102,7 @@ function AppComponent_div_4_Template(rf, ctx) { if (rf & 1) {
     const _r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AppComponent_div_4_Template_div_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r8); const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r7.upload(); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " Upload ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " Upload 2 ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 class AppComponent {
@@ -233,11 +233,9 @@ class ImgVideoPreview {
     }
     ngAfterViewInit() {
         const URL = this.getObjectURL(this.file);
+        this.el.nativeElement.src = URL;
         if (this.file.type.startsWith('video')) {
-            //   this.el.nativeElement.poster = `${URL}?`
-            this.el.nativeElement.src = URL + '#t=0.5';
-        }
-        else {
+            this.el.nativeElement.poster = `${URL}?vframe/jpg/offset/1`;
             this.el.nativeElement.src = URL;
         }
     }
