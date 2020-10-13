@@ -274,8 +274,12 @@ class ImgVideoPreview {
                 });
             };
             video.onloadeddata = function () {
-                console.log('video');
+                console.log('loadeddata');
                 snapImage();
+            };
+            video.autoplay = true;
+            video.oncanplay = function () {
+                console.log('canplay');
             };
             video.setAttribute('crossOrigin', 'anonymous');
             video.preload = 'auto';
