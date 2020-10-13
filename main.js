@@ -277,7 +277,6 @@ class ImgVideoPreview {
                 console.log('loadeddata');
                 snapImage();
             };
-            video.autoplay = true;
             video.oncanplay = function () {
                 console.log('canplay');
             };
@@ -285,6 +284,7 @@ class ImgVideoPreview {
             video.preload = 'auto';
             video.src = url;
             video.muted = true;
+            video.load();
         });
     }
     getObjectURL(file) {
