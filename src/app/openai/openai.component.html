@@ -1,0 +1,14 @@
+<section>
+  <textarea
+    nz-input
+    placeholder="你想问啥"
+    [nzAutosize]="{ minRows: 4, maxRows: 8 }"
+    [(ngModel)]="prompt"
+  ></textarea>
+
+  <button nz-button nzType="primary" [nzLoading]="fetching" (click)="go()">
+    GO
+  </button>
+
+  <div class="answer" [innerHTML]="answer"></div>
+</section>
