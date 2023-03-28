@@ -70,19 +70,47 @@ class OpenaiComponent {
         this.http = http;
         this.fetching = false;
     }
-    ngOnInit() { }
+    ngOnInit() {
+        this.connectToServer().then((ws) => {
+            this.ws = ws;
+            ws.onmessage = (e) => {
+                const parsedData = JSON.parse(e.data);
+                this.answer = parsedData.open_ai;
+                if (parsedData.is_end) {
+                    this.fetching = false;
+                }
+            };
+        });
+    }
+    connectToServer() {
+        const ws = new WebSocket('ws://8316-45-62-167-199.ngrok.io/ws/open_ai');
+        return new Promise((resolve, reject) => {
+            const timer = setInterval(() => {
+                if (ws.readyState === 1) {
+                    clearInterval(timer);
+                    resolve(ws);
+                }
+            }, 10);
+        });
+    }
     go() {
         if (this.prompt) {
             this.fetching = true;
-            this.http
-                .request('POST', 'https://8316-45-62-167-199.ngrok.io/open_ai/prompt', {
-                body: {
-                    prompt: this.prompt,
-                },
-            })
-                .subscribe((data) => {
-                this.answer = data.open_ai;
-            }, () => { }, () => (this.fetching = false));
+            this.ws.send(JSON.stringify({ prompt: this.prompt }));
+            //   this.fetching = true;
+            //   this.http
+            //     .request('POST', 'https://8316-45-62-167-199.ngrok.io/open_ai/prompt', {
+            //       body: {
+            //         prompt: this.prompt,
+            //       },
+            //     })
+            //     .subscribe(
+            //       (data: any) => {
+            //         this.answer = data.open_ai;
+            //       },
+            //       () => {},
+            //       () => (this.fetching = false)
+            //     );
         }
     }
 }
@@ -288,4 +316,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.4fa8f13ac6f9b02d09b0.js.map
+//# sourceMappingURL=main.6142ac434c24475f53a3.js.map
