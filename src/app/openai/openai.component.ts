@@ -31,7 +31,7 @@ export class OpenaiComponent implements OnInit {
   }
 
   connectToServer() {
-    const ws = new WebSocket('wss://8316-45-62-167-199.ngrok.io/ws/open_ai');
+    const ws = new WebSocket('wss://b1dd-36-112-69-52.ngrok.io/ws/open_ai');
     return new Promise((resolve, reject) => {
       const timer = setInterval(() => {
         if (ws.readyState === 1) {
