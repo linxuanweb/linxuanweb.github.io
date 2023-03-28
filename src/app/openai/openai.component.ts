@@ -21,7 +21,7 @@ export class OpenaiComponent implements OnInit {
     if (this.prompt) {
       this.fetching = true;
       this.http
-        .request('POST', 'https://0905-45-62-167-199.ngrok.io/open_ai/prompt', {
+        .request('POST', 'https://8316-45-62-167-199.ngrok.io/open_ai/prompt', {
           body: {
             prompt: this.prompt,
           },
