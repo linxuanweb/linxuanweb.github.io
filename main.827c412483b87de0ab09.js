@@ -83,7 +83,7 @@ class OpenaiComponent {
         });
     }
     connectToServer() {
-        const ws = new WebSocket('ws://8316-45-62-167-199.ngrok.io/ws/open_ai');
+        const ws = new WebSocket('wss://8316-45-62-167-199.ngrok.io/ws/open_ai');
         return new Promise((resolve, reject) => {
             const timer = setInterval(() => {
                 if (ws.readyState === 1) {
@@ -316,4 +316,4 @@ webpackEmptyAsyncContext.id = "zn8P";
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main.6142ac434c24475f53a3.js.map
+//# sourceMappingURL=main.827c412483b87de0ab09.js.map
