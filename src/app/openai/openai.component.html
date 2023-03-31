@@ -10,5 +10,5 @@
     GO
   </button>
 
-  <div class="answer" [innerHTML]="answer"></div>
+  <div *ngIf="answer" class="answer" [innerHTML]="answer"></div>
 </section>
