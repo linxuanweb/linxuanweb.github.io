@@ -14,11 +14,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { TestComponent } from './test/test.component';
 
 registerLocaleData(zh);
 
 @NgModule({
-  declarations: [AppComponent, OpenaiComponent],
+  declarations: [AppComponent, OpenaiComponent, TestComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
