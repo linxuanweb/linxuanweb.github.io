@@ -1,7 +1,7 @@
 <section>
   <textarea
     nz-input
-    placeholder="你想问啥"
+    placeholder="The Question"
     [nzAutosize]="{ minRows: 4, maxRows: 8 }"
     [(ngModel)]="prompt"
   ></textarea>
@@ -10,10 +10,5 @@
     GO
   </button>
 
-  <div
-    *ngIf="answer"
-    class="answer"
-    [innerHTML]="answer"
-    (click)="test($event)"
-  ></div>
+  <markdown style="width: 100%" [data]="answer"> </markdown>
 </section>

@@ -34,8 +34,17 @@
                 "output": "/assets/"
               }
             ],
-            "styles": ["src/styles.less"],
-            "scripts": []
+            "styles": [
+              "src/styles.less",
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "node_modules/prismjs/themes/prism-okaidia.css"
+            ],
+            "scripts": [
+              "node_modules/marked/marked.min.js",
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-csharp.min.js",
+              "node_modules/prismjs/components/prism-css.min.js"
+            ]
           },
           "configurations": {
             "production": {
